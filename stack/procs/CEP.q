@@ -24,8 +24,6 @@ pub:{
     neg[h](`.u.upd;`ohlc;value flip o where b);
  }
 
-
-
 .u.end:{[d]
     o:0!ohlc;
     if[count o; neg[h](`.u.upd;`ohlc;value flip o)];
@@ -37,3 +35,10 @@ pub:{
 sub:{[t] h(`.u.sub;t)}
 sub`trade;
 \t 1000
+
+/ 
+KL
+
+Consistency - why capitalise CEP and not lvc?
+Removed treble whitespace
+Not great to have a gloval variable h - may clash or confuse with local h
