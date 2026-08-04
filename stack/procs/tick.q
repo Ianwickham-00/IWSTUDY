@@ -18,11 +18,11 @@ system"l ../config/schemas.q"
  }
 
 .u.pub:{[t;data]
-    neg[.u.w[t]]@\:(`upd;t;data);
+    neg[.u.w[t]]@\:(`upd;t;data);       / oen liner, no need for square brackets in .u.w[t]
  }
 
 .u.del:{[x] 
-    .u.w:.u.w except 'x}
+    .u.w:.u.w except 'x}            / can be a one liner
 
 .u.endofday:{neg[distinct raze .u.w]@\:(`.u.end;.z.d)}
 
