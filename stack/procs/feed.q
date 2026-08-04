@@ -25,3 +25,6 @@ sendtp:{pub'[(`trade`quote);(genTrade`;genQuote`)]}
 
 .z.ts:.event.fire`.z.ts
 system"t 100"
+
+/ 
+similar issue to cep with static global var h

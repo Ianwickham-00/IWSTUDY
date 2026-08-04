@@ -5,8 +5,8 @@ if[null h:.ipc.conn`tp1;: (-1"could not connect";exit 1)]
 `sym xkey'tables`;
 sub:{[t] h(`.u.sub;t)};
 
-upd:{[t;x] 
-    t upsert `sym xkey x;
+upd:{[t;x]                      / such a short function can be a one liner
+    t upsert `sym xkey x;       / why are you doing xkey? you have already keyed the tables in your global namespace
     }
 
 getLast:{[syms;includeQuotes]
@@ -16,3 +16,12 @@ getLast:{[syms;includeQuotes]
     }
 
 sub`
+
+/ 
+The following looks strange to me:
+ if[null h:.ipc.conn`tp1;: (-1"could not connect";exit 1)]
+
+I would've thought the following to be standard:
+ if[null h:.ipc.conn`tp1;-1"could not connect";exit 1]
+
+-> an if statement runs all blocks, so ; between each one is fine. Leave the exit until last
