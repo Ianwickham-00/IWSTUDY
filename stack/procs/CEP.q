@@ -18,20 +18,21 @@ upd:{[t;x]
 
 pub:{
     o:0!ohlc;
-    b:o[`barTime]<cutoff:.z.p-barInterval ;
+    b:o[`barTime]<cutoff:.z.p-barInterval;
     if[not any b;:()];
     ohlc::2!delete from o where barTime<cutoff;
     neg[h](`.u.upd;`ohlc;value flip o where b);
  }
 
-.event.addHandler[`.z.ts;pub]
 
-/ tp1 calls this at midnight: flush whatever bars are still open
+
 .u.end:{[d]
     o:0!ohlc;
     if[count o; neg[h](`.u.upd;`ohlc;value flip o)];
-    ohlc::2!0#o;
+    delete from `ohlc;
  }
+
+.event.addHandler[`.z.ts;pub]
 
 sub:{[t] h(`.u.sub;t)}
 sub`trade;
