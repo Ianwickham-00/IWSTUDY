@@ -1,9 +1,7 @@
-/ cc.q - command and control. watches every process in config/processes.csv,
-/ heartbeats them and records what is up.
 .boot.loadLib`cron;
 
-.cc.HEARTBEAT:00:00:05;                 / how often to beat (cron period)
-.cc.MAXTRIES:3;                        / unanswered beats before a proc is called down
+.cc.HEARTBEAT:00:00:05;
+.cc.MAXTRIES:3;
 
 / one row per configured process
 .cc.status:1!flip`name`proc`port`handle`up`lastBeat`tries!"ssjibpj"$\:();
