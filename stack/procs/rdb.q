@@ -1,6 +1,6 @@
-system"l /home/iwickham/IWSTUDY/stack/lib/cron.q";
-system"l ../config/schemas.q"
-if[null h:.ipc.conn`tp1;: (1"could not connect";exit 1)]
+.boot.loadLib`cron;
+.boot.loadSchemas[];
+if[null h:.ipc.conn`tp1; -1"could not connect";exit 1]
 
 hdbh:.ipc.conn`hdb1
 upd:upsert
@@ -8,7 +8,7 @@ upd:upsert
 sub:{[t] h(`.u.sub;t)}
 
 savetable:{[d;t] 
-    .Q.dpft[`:/home/iwickham/IWSTUDY/stack/hdb;d;`sym;t];
+    .Q.dpft[.boot.hfile"hdb";d;`sym;t];
     delete from t;
     neg[hdbh](`refresh;`);
     }

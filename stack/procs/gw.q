@@ -1,5 +1,5 @@
 \e 1
-system"l /home/iwickham/IWSTUDY/stack/lib/cron.q"
+.boot.loadLib`cron;
 
 .gw.clientRequests:1!flip`clientReqID`handle`requests`responses!"ji**"$\:();
 .gw.serverRequests:flip`serverReqID`clientReqID`responded`result`error!"jjb**"$\:();

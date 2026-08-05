@@ -1,11 +1,12 @@
 \e 1
-system"l /home/iwickham/IWSTUDY/stack/lib/cron.q"
+.boot.loadLib`cron;
+.boot.loadSchemas[];
 
 h:.ipc.conn`tp1;
 
 barInterval:00:01:00.000000000;
 
-ohlc:2!flip`sym`barTime`o`h`l`c!"spffff"$\:();
+ohlc:2!ohlc;   / local copy is keyed; the shared schema is not
 
 upd:{[t;x]
     chunk:update barTime:barInterval xbar time from x;

@@ -1,10 +1,6 @@
-/ can you remove any harded coded paths
-/ perhaps put into a .env file and a boot
-/ but I realise this is a WIP (work in progress)
+.boot.loadLib`event;
 
-processes:1!("SSJ";enlist",")0:`:/home/iwickham/IWSTUDY/stack/config/processes.csv;
-
-.ipc.conns:processes lj 1!flip `name`proc`port`handle!"ssji"$\:();
+.ipc.conns:.boot.processes lj 1!flip `name`proc`port`handle!"ssji"$\:();
 
 .ipc.conn:{[Sname] / not a lover of caps in arg
     d:.ipc.conns Sname;

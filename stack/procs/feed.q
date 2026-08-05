@@ -1,5 +1,5 @@
 \e 1
-system"l /home/iwickham/IWSTUDY/stack/lib/cron.q"
+.boot.loadLib`cron;
 
 SYMS:`JPM`GOOG`TSLA`NVDA`MSFT`META`PLNTR1`GE;
 EX:`N`C`L

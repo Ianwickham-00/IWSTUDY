@@ -1,5 +1,5 @@
-system"l /home/iwickham/IWSTUDY/stack/lib/cron.q";
-system"l ../config/schemas.q"
+.boot.loadLib`cron;
+.boot.loadSchemas[];
 
 if[null h:.ipc.conn`tp1;: (-1"could not connect";exit 1)]
 `sym xkey'tables`;

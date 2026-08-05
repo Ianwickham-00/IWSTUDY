@@ -1,8 +1,8 @@
-system"l ../lib/cron.q"
+.boot.loadLib`cron;
 .ipc.conn`rdb1
-system"l /home/iwickham/IWSTUDY/stack/hdb"
 
-refresh:{system"l /home/iwickham/IWSTUDY/stack/hdb"}
+refresh:{if[not count key .boot.hfile"hdb";:()];.boot.loadFile"hdb"}
+refresh[];
 
 getTrades:{[daterange;syms;includeQuotes]
     $[not includeQuotes;

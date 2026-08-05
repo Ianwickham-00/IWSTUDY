@@ -1,5 +1,4 @@
-system"l /home/iwickham/IWSTUDY/stack/lib/event.q"
-system"l /home/iwickham/IWSTUDY/stack/lib/ipc.q"
+.boot.loadLib`event`ipc;
 
 .cron.jobs:1!flip`func`start`period`lastRun`nextRun`error!"spvpp*"$\:();
 .cron.add:{[func;start;period] `.cron.jobs upsert (func;start;period;0Np;start;())};

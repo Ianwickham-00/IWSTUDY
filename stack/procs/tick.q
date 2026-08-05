@@ -1,5 +1,5 @@
-system"l ../lib/cron.q"
-system"l ../config/schemas.q"
+.boot.loadLib`cron;
+.boot.loadSchemas[];
 
 .u.w:`trade`quote`ohlc!"iii"$\:();
 

@@ -1,0 +1,4 @@
+table,cols,types
+trade,time sym size price exchange,psjfs
+quote,time sym bid ask bidSize askSize exchange,psffjjs
+ohlc,sym barTime o h l c,spffff
