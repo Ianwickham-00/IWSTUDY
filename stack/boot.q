@@ -4,7 +4,7 @@
 .boot.loadFile:{system"l ",.boot.file x};
 .boot.loadCsv:{[types;f] (types;enlist",")0:.boot.hfile f};
 
-.boot.loaded:`symbol$();
+.boot.loaded:`symbol$();        / don't need semi colons for assignment
 .boot.loadLib:{{if[not x in .boot.loaded;.boot.loaded,:x;.boot.loadFile"lib/",string[x],".q"]}each(),x};
 
 .boot.loadSchemas:{{x[`table] set flip(`$" "vs string x`cols)!(string x`types)$\:()}each .boot.loadCsv["SSS";"config/schemas.csv"]};
@@ -19,3 +19,6 @@
  };
 
 if[count o:.Q.opt .z.x;.boot.start first key o];
+
+/ 
+Csv is debatable. It is an ancronym so perhaps loadCSV is better, but minor

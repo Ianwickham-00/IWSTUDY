@@ -25,11 +25,4 @@ getTrades:{[daterange;syms;includeQuotes]
     }
 
 / 
-The standard for an rdb is for upd to be insert
-tables will never be keyed
-Is it the done thing to tell the hdb to refresh each time you save a table
-or do it after you've saved all?
-I would think doing it after each table could great incosistencies
-
-The sub` looks a bit lost in the middle
-More standard to leave actions until end of file
+sub` is still in the middle of the file

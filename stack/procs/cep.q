@@ -38,8 +38,4 @@ sub`trade;
 \t 1000
 
 / 
-KL
-
-Consistency - why capitalise CEP and not lvc?
-Removed treble whitespace
-Not great to have a gloval variable h - may clash or confuse with local h
+h is still a global variable

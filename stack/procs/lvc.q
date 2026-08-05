@@ -18,10 +18,4 @@ getLast:{[syms;includeQuotes]
 sub`
 
 / 
-The following looks strange to me:
- if[null h:.ipc.conn`tp1;: (-1"could not connect";exit 1)]
-
-I would've thought the following to be standard:
- if[null h:.ipc.conn`tp1;-1"could not connect";exit 1]
-
--> an if statement runs all blocks, so ; between each one is fine. Leave the exit until last
+you still have h as a gloval variable

@@ -34,3 +34,6 @@
 
 / .cron.run fires off .z.ts -- without a timer .u.endofday never runs
 \t 1000
+
+/
+Hard coding table names when assigning .u.w is a definite no-no

@@ -17,3 +17,7 @@
 
 .event.addHandler[`.z.ts;.cron.run];
 .z.ts:.event.fire`.z.ts;
+
+/
+Don't know why you have ; at the end of function definitions
+Also no need for them at end of assignments e.g. .z.ts:.event.fire`.z.ts;

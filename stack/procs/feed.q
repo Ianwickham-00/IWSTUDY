@@ -27,4 +27,8 @@ sendtp:{pub'[(`trade`quote);(genTrade`;genQuote`)]}
 system"t 100"
 
 / 
-similar issue to cep with static global var h
+if quote is time sym bid ask bidSize askSize exchange
+the use of d and s as variable names is not intuitive
+also, ask should be higher than bid, not lower
+
+still a global h

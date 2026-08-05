@@ -17,4 +17,5 @@
 .z.pc:.event.fire`.z.pc;
 
 /
-I removed double whitespace, doesn't look good
+.ipc.tryconnect:@[hopen;;0Ni]   / a bit tighter
+still caps in arg
