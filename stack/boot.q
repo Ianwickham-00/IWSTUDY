@@ -13,7 +13,7 @@
 
 .boot.start:{
     d:.boot.processes x;
-    if[null d`port;'"unknown proc: ",string x];
+    if[null d`port;'"unknown proccess: ",string x];
     system"p ",string d`port;
     .boot.loadFile"procs/",string[d`proc],".q";
  };
