@@ -2,6 +2,10 @@ name,proc,port
 tp1,tick,5010
 rdb1,rdb,5020
 hdb1,hdb,5030
+hdb2,hdb,5031
+hdb3,hdb,5032
+hdb4,hdb,5033
+hdb5,hdb,5034
 feed1,feed,5040
 lvc1,lvc,5050
 sgw,gw,5060

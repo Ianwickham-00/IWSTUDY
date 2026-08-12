@@ -6,7 +6,14 @@
 .gw.CLIENT_REQ:1000
 .gw.SERVER_REQ:1000
 
-(hr;hh):.ipc.conn each`rdb1`hdb1;
+.gw.pending:(`int$())!()
+
+.gw.pool:{[p]
+    .ipc.conn each exec name from .boot.processes where proc=p;
+    exec handle from .ipc.conns where proc=p,not null handle
+ }
+
+.gw.pick:{[s] s d?min d:count each .gw.pending s}
 
 .gw.query:{[funcargs]
     args:1_funcargs;
@@ -14,15 +21,24 @@
     `.gw.clientRequests upsert (id;.z.w;0;0);
 
     if[args[0;0]<.z.d;
-        .gw.runasync[hh;id;funcargs]];
+        .gw.runasync[`hdb;id;funcargs]];
 
     if[.z.d within args[0];
-        .gw.runasync[hr;id;funcargs]];
+        .gw.runasync[`rdb;id;funcargs]];
  }
 
-.gw.runasync:{[sh;id;fa]
+.gw.runasync:{[p;id;fa]
     update requests+1 from `.gw.clientRequests where clientReqID=id;
-    neg[sh]({neg[.z.w](`.gw.serverResponse;x;@[value;y;{(`ERR;x)}])};id;fa)fa
+    if[not count s:.gw.pool p;:.gw.serverResponse[id;(`ERR;`noslaves)]];
+    .gw.pending[h:.gw.pick s],:enlist id;
+    neg[h]({neg[.z.w](`.gw.reply;@[value;x;{(`ERR;x)}])};fa);
+    neg[h][];
+ }
+
+.gw.reply:{[data]
+    id:first .gw.pending h:.z.w;
+    .gw.pending[h]:1_.gw.pending h;
+    .gw.serverResponse[id;data];
  }
 
 .gw.serverResponse:{[id;data]
@@ -36,7 +52,7 @@
 
     if[`ERR~first data;
         update error:enlist data from `.gw.serverRequests where serverReqID=sid];
-    
+
     if[(.gw.clientRequests[id]`requests)=exec sum responded from .gw.serverRequests where clientReqID=id;
         neg[.gw.clientRequests[id]`handle](`gwResponse;raze exec result from .gw.serverRequests where clientReqID=id)]
 
