@@ -15,7 +15,7 @@ savetable:{[d;t]
 
 .u.end:{[d] savetable[d] each tables`}
 
-getTrades:{[daterange;syms;includeQuotes]
+getTrades:{[daterange;syms;includeQuotes]       / include the positive case first e.g. $[includeQuotes; aj...; ?[`trade...]
     $[not includeQuotes;
         ?[`trade;enlist(in;`sym;enlist syms);0b;()];
         aj[`sym`time;?[`trade;enlist(in;`sym;enlist syms);0b;()];quote]

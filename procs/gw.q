@@ -23,7 +23,7 @@
     if[args[0;0]<.z.d;
         .gw.runasync[`hdb;id;funcargs]];
 
-    if[.z.d within args[0];
+    if[.z.d within args[0]; / no need for square brackets
         .gw.runasync[`rdb;id;funcargs]];
  }
 

@@ -19,3 +19,12 @@
  }
 
 if[count o:.Q.opt .z.x;.boot.start first key o]
+
+/
+some chaining might make things a bit neater
+
+.boot.hfile:` sv .boot.root,`$
+.boot.file:1_string .boot.hfile@
+.boot.loadFile:system"l ",.boot.file@
+
+
