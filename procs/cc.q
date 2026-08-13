@@ -40,8 +40,10 @@
 .cc.down:{[n]
     d:.cc.status n;
     if[d[`up]and d`wanted;.cc.log[n;"down"]];
-    if[not null d`handle;.ipc.disconnect d`handle;@[hclose;d`handle;()]];
     update handle:0Ni,up:0b,tries:0 from `.cc.status where name=n;
+    if[null h:d`handle;:()];
+        .ipc.disconnect h;
+        @[hclose;h;()];
  }
 
 .cc.onClose:{[h] .cc.down each exec name from .cc.status where handle=h}
