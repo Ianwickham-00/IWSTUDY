@@ -1,8 +1,6 @@
 .boot.loadLib`cron;
-.ipc.conn`rdb1
 
-refresh:{if[not count key .boot.hfile"hdb";:()];.boot.loadFile"hdb"}
-refresh[];
+refresh:{if[count key .boot.hfile"hdb";.boot.loadFile"hdb"]}
 
 getTrades:{[daterange;syms;includeQuotes]
     $[not includeQuotes;
@@ -11,7 +9,5 @@ getTrades:{[daterange;syms;includeQuotes]
     ]
     }
 
-/
-refresh:{if[count key .boot.hfile"hdb";.boot.loadFile"hdb"]}
-
-you still have a function call in the middle of the file, best to put calls at the end
+.ipc.conn`rdb1;
+refresh[]

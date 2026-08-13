@@ -2,11 +2,9 @@
 .boot.loadLib`cron;
 .boot.loadSchemas[];
 
-h:.ipc.conn`tp1;
+barInterval:00:01:00.000000000
 
-barInterval:00:01:00.000000000;
-
-ohlc:2!ohlc;   / local copy is keyed; the shared schema is not
+ohlc:2!ohlc   / local copy is keyed; the shared schema is not
 
 upd:{[t;x]
     chunk:update barTime:barInterval xbar time from x;
@@ -22,20 +20,17 @@ pub:{
     b:o[`barTime]<cutoff:.z.p-barInterval;
     if[not any b;:()];
     ohlc::2!delete from o where barTime<cutoff;
-    neg[h](`.u.upd;`ohlc;value flip o where b);
+    neg[.ipc.conn`tp1](`.u.upd;`ohlc;value flip o where b);
  }
 
 .u.end:{[d]
     o:0!ohlc;
-    if[count o; neg[h](`.u.upd;`ohlc;value flip o)];
+    if[count o; neg[.ipc.conn`tp1](`.u.upd;`ohlc;value flip o)];
     delete from `ohlc;
  }
 
 .event.addHandler[`.z.ts;pub]
 
-sub:{[t] h(`.u.sub;t)}
+sub:{[t] .ipc.conn[`tp1](`.u.sub;t)}
 sub`trade;
 \t 1000
-
-/ 
-h is still a global variable
