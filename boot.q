@@ -1,7 +1,7 @@
 .boot.root:hsym`$getenv`SHOME
-.boot.hfile:{` sv .boot.root,`$x}
-.boot.file:{1_string .boot.hfile x}
-.boot.loadFile:{system"l ",.boot.file x}
+.boot.hfile:` sv .boot.root,`$
+.boot.file:1_string .boot.hfile@
+.boot.loadFile:system"l ",.boot.file@
 .boot.loadCSV:{[types;f] (types;enlist",")0:.boot.hfile f}
 
 .boot.loaded:`symbol$()
@@ -22,9 +22,3 @@ if[count o:.Q.opt .z.x;.boot.start first key o]
 
 /
 some chaining might make things a bit neater
-
-.boot.hfile:` sv .boot.root,`$
-.boot.file:1_string .boot.hfile@
-.boot.loadFile:system"l ",.boot.file@
-
-
