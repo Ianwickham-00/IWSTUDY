@@ -1,7 +1,6 @@
 .boot.loadLib`cron;
+.cc.conf:.boot.loadSettings"config/settings.csv"
 
-.cc.HEARTBEAT:00:00:05
-.cc.MAXTRIES:3
 .cc.QBIN:getenv[`QHOME],"/bin/q"
 .cc.LOGDIR:.boot.file"log"
 
